@@ -1,10 +1,5 @@
 public class Eratosfen {
 
-    public static void main(String[] args) {
-        Eratosfen eratosfen = new Eratosfen();
-        eratosfen.calc(100);
-    }
-
     private void calc(int inputN) {
         int[] allNumbers = new int[inputN];
         //заполняем массив
@@ -23,5 +18,10 @@ public class Eratosfen {
                 }
             }
         }
+    }
+
+    public static void main(String[] args) {
+        Eratosfen eratosfen = new Eratosfen();
+        eratosfen.calc(100);
     }
 }
