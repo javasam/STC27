@@ -19,7 +19,6 @@ public class Main {
         } catch (NegativeNumberException e) {
             System.out.println(e);
         }
-
-
+        
     }
 }
