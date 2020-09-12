@@ -17,9 +17,8 @@ public class Main {
             System.out.println(sqrt.sorting(sqrt.calculation
                     (generator.array(calc.stringInput("       N=100")), 9)));
         } catch (NegativeNumberException e) {
-            System.out.println("1111");
+            System.out.println(e);
         }
-
-
+        
     }
 }
