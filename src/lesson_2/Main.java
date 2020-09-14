@@ -1,5 +1,6 @@
 package lesson_2;
 
+import java.util.HashMap;
 import java.util.Iterator;
 
 /**
@@ -28,9 +29,10 @@ public class Main {
          * Display SimpleHashMap methods: size, get, toString, remove.
          */
         System.out.println("HashMap size: " + simpleHashMap.size());
-        System.out.println("HashMap get element dy key " + simpleHashMap.get(2));
+        System.out.println("HashMap get element by key " + simpleHashMap.get(2));
         System.out.println(simpleHashMap.toString());
         simpleHashMap.remove(1);
+        System.out.println("Removed element: " + simpleHashMap.get(1));
         /**
          * Display iterator opportunities
          */

@@ -31,26 +31,31 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleEntry<K, V>> {
      */
     public void put(K key, V value) {
         modificationCount++;
+        int numBasket = 0;
         if (key == null) {
             if (array[0] == null) {
-                array[0] = new SimpleEntry<K, V>(null, value);
+                array[0] = new SimpleEntry<K, V>(key, value);
                 size++;
             } else {
                 array[0].setValue(value);
             }
         }
 
-        int numBacked = Math.abs(key.hashCode()) % capacity;
+        if (null == key) {
+            numBasket = 0;
+        } else {
+            numBasket = Math.abs(key.hashCode()) % capacity;
+        }
 
 
-        if (array[numBacked] == null) {
-            array[numBacked] = new SimpleEntry<K, V>(key, value);
+        if (null == array[numBasket]) {
+            array[numBasket] = new SimpleEntry<K, V>(key, value);
             size++;
         } else {
-            SimpleEntry<K, V> entry = array[numBacked];
+            SimpleEntry<K, V> entry = array[numBasket];
 
             while (true) {
-                if (entry.getKey().equals(key)) {
+                if (null != entry.getKey() & entry.getKey().equals(key)) {
                     entry.setValue(value);
                     return;
                 }
@@ -82,12 +87,12 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleEntry<K, V>> {
             return array[0].getValue();
         }
 
-        int numBacked = Math.abs(key.hashCode()) % capacity;
+        int numBasket = Math.abs(key.hashCode()) % capacity;
 
-        if (array[numBacked] == null) {
+        if (array[numBasket] == null) {
             return null;
         } else {
-            SimpleEntry<K, V> entry = array[numBacked];
+            SimpleEntry<K, V> entry = array[numBasket];
 
             while (true) {
                 if (entry.getKey().equals(key)) {
@@ -108,7 +113,7 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleEntry<K, V>> {
      *
      * @param key by key param
      */
-    public void remove(K key) {
+    public void remove(Integer key) {
         if (key == null) {
             if (array[0] != null) {
                 modificationCount++;
@@ -121,19 +126,19 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleEntry<K, V>> {
             return;
         }
 
-        int numBacked = Math.abs(key.hashCode()) % capacity;
+        int numBasket = Math.abs(key.hashCode()) % capacity;
 
-        if (array[numBacked] != null) {
-            if (array[numBacked].getKey().equals(key)) {
-                array[numBacked] = array[numBacked].getNext();
+        if (array[numBasket] != null) {
+            if (array[numBasket].getKey().equals(key)) {
+                array[numBasket] = array[numBasket].getNext();
                 modificationCount++;
                 size--;
                 return;
             }
 
-            if (array[numBacked].getNext() != null) {
-                SimpleEntry<K, V> prev = array[numBacked];
-                SimpleEntry<K, V> entry = array[numBacked].getNext();
+            if (array[numBasket].getNext() != null) {
+                SimpleEntry<K, V> prev = array[numBasket];
+                SimpleEntry<K, V> entry = array[numBasket].getNext();
                 SimpleEntry<K, V> next = entry.getNext();
 
                 while (true) {
@@ -172,7 +177,7 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleEntry<K, V>> {
         return new Iterator<SimpleEntry<K, V>>() {
 
             private int expectedModificationCount;
-            private int currentNumBacked;
+            private int currentNumBasket;
             private SimpleEntry<K, V> nextEntry;
             private SimpleEntry<K, V> currentEntry;
 
@@ -200,9 +205,9 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleEntry<K, V>> {
 
                 if (nextEntry.getNext() == null) {
                     nextEntry = null;
-                    for (++currentNumBacked; currentNumBacked < capacity; currentNumBacked++) {
-                        if (array[currentNumBacked] != null) {
-                            nextEntry = array[currentNumBacked];
+                    for (++currentNumBasket; currentNumBasket < capacity; currentNumBasket++) {
+                        if (array[currentNumBasket] != null) {
+                            nextEntry = array[currentNumBasket];
                         }
                     }
                 } else {
@@ -241,8 +246,8 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleEntry<K, V>> {
         return set;
     }
 
-    public Set<K> keySet() {
-        Set<K> set = new HashSet<>();
+    public Set<Integer> keySet() {
+        Set<Integer> set = new HashSet<>();
 
         for (SimpleEntry<K, V> entry : array) {
             while (entry != null) {

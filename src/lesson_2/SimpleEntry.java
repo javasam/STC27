@@ -10,8 +10,11 @@ class SimpleEntry<K, V> {
         this.value = value;
     }
 
-    public K getKey() {
-        return key;
+    public Integer getKey() {
+        if (null != key) {
+            return (Integer) key;
+        }
+        return 0;
     }
 
     public V getValue() {
