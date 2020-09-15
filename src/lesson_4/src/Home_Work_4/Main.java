@@ -1,5 +1,7 @@
 package Home_Work_4;
 
+import java.util.Arrays;
+
 /**
  * Дан массив объектов Person. Класс Person характеризуется полями age (возраст, целое число 0-100),
  * sex (пол – объект класса Sex со строковыми константами внутри MAN, WOMAN), name (имя - строка).
@@ -19,33 +21,18 @@ package Home_Work_4;
  */
 
 public class Main {
-    public static void main(String[] args) {
-        //GenerateArray generateArray = new GenerateArray();
+    public static void main(String[] args) throws IdenticalAgeNameException {
+        GenerateArray generateArray = new GenerateArray();
+        ArrayShow arrayShow = new ArrayShow();
 
-        /**
-         * Compare test, return 0 if equals
-         */
-        Person[] person = new Person[2];
-        person[0] = new Person();
-        person[0].setSex("MAN");
-        person[0].setName(Names.ABIGAIL);
-        person[0].setAge(27);
-        person[1] = new Person();
-        person[1].setSex("MAN");
-        person[1].setName(Names.CLARA);
-        person[1].setAge(22);
-        System.out.println("person = " + person[0]);
-        System.out.println("person = " + person[1]);
-        System.out.println(person[0].compareTo(person[1]));
-        System.out.println("!!!! " + person[1].getName().toString().compareTo(person[0].getName().toString()));
+        Person[] person;
+        person = generateArray.generatorArrayOfPersons(10000);
 
-        /*for (Person array : generateArray.generatorArrayOfPersons(5)) {
-            array.toString();
-        }*/
-
-        //person = generateArray.generatorArrayOfPersons(10);
-        /*SortingOption1 sortingOption1 = new SortingOption1();
-        sortingOption1.sort(person);*/
-
+        long start = System.currentTimeMillis();
+        Arrays.sort(person, new PersonCompareBySex().thenComparing(new PersonCompare()));
+        long end = System.currentTimeMillis() - start;
+        System.out.println("Сортированный массив: ");
+        arrayShow.showArray(person);
+        System.out.println("Затраченное время на сортировку: " + end / 1000 + " sec");
     }
 }

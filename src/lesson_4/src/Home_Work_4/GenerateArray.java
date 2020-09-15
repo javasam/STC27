@@ -16,7 +16,6 @@ public class GenerateArray {
             } else {
                 person[i].setSex(sex.woman);
             }
-            System.out.println(person[i]);
         }
         return person;
     }
