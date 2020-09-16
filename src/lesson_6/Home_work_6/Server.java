@@ -3,8 +3,6 @@ package lesson_6.Home_work_6;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.Arrays;
-import java.util.List;
 
 class Server implements Runnable {
 
