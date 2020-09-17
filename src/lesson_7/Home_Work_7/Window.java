@@ -52,10 +52,20 @@ public class Window implements Runnable {
                 }
             }
         }
-        for (int x = 10; x < 15; x++) {
-            cells[x][10].cellAction.cellStatus = CellStatus.LIVE;
-            cells[x][10].setColor();
-        }
+        /**
+         * Start shape Glider
+         */
+        cells[2][2].cellAction.cellStatus = CellStatus.LIVE;
+        cells[2][2].setColor();
+        cells[2][4].cellAction.cellStatus = CellStatus.LIVE;
+        cells[2][2].setColor();
+        cells[3][3].cellAction.cellStatus = CellStatus.LIVE;
+        cells[2][2].setColor();
+        cells[3][4].cellAction.cellStatus = CellStatus.LIVE;
+        cells[2][2].setColor();
+        cells[4][3].cellAction.cellStatus = CellStatus.LIVE;
+        cells[2][2].setColor();
+
     }
 
     private void initTimer() {
