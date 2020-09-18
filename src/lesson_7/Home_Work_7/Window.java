@@ -4,19 +4,48 @@ import javax.swing.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 
 import static lesson_7.Home_Work_7.Config.*;
 
 public class Window implements Runnable {
 
+    URL URL_WINDOW;
+
+    {
+        URL_WINDOW = new URL("https://raw.githubusercontent.com/javasam/STC27/master/src/lesson_7/Home_Work_7/config.txt");
+    }
+
+    URL URL_SHAPE;
+
+    {
+        URL_SHAPE = new URL("https://raw.githubusercontent.com/javasam/STC27/master/src/lesson_7/Home_Work_7/shape.txt");
+    }
+
     JFrame frame;
     Cell[][] cells;
+
+    public Window() throws MalformedURLException {
+    }
 
 
     @Override
     public void run() {
+        try {
+            Config.configWindowsInit(
+                    Config.parser(URL_WINDOW));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         initFrame();
-        initCell();
+        try {
+            initCell();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         initTimer();
     }
 
@@ -30,11 +59,12 @@ public class Window implements Runnable {
         frame.setTitle("!!!THE LIFE!!!");
     }
 
-    void initCell() {
+    void initCell() throws IOException {
+        ArrayList<Integer> arrayList = parser(URL_SHAPE);
         cells = new Cell[WIDTH][HEIGHT];
+
         for (int x = 0; x < WIDTH; x++) {
             for (int y = 0; y < HEIGHT; y++) {
-                CellAction cellAction = new CellAction();
                 cells[x][y] = new Cell(x, y);
                 frame.add(cells[x][y]);
             }
@@ -52,20 +82,21 @@ public class Window implements Runnable {
                 }
             }
         }
+
         /**
          * Start shape Glider
          */
-        cells[2][2].cellAction.cellStatus = CellStatus.LIVE;
-        cells[2][2].setColor();
-        cells[2][4].cellAction.cellStatus = CellStatus.LIVE;
-        cells[2][2].setColor();
-        cells[3][3].cellAction.cellStatus = CellStatus.LIVE;
-        cells[2][2].setColor();
-        cells[3][4].cellAction.cellStatus = CellStatus.LIVE;
-        cells[2][2].setColor();
-        cells[4][3].cellAction.cellStatus = CellStatus.LIVE;
-        cells[2][2].setColor();
-
+        int qx;
+        int qy;
+        if (!arrayList.isEmpty()) {
+            for (int i = 0; i < arrayList.size(); i = i + 2) {
+                qx = (Integer) arrayList.toArray()[i];
+                qy = (Integer) arrayList.toArray()[i + 1];
+                cells[qx][qy].cellAction.cellStatus = CellStatus.LIVE;
+                cells[qx][qy].setColor();
+            }
+        }
+        System.out.println("Shape Loaded!!!");
     }
 
     private void initTimer() {
