@@ -19,10 +19,6 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleEntry<K, V>> {
         this.capacity = capacity;
     }
 
-    public int getModificationCount() {
-        return modificationCount;
-    }
-
     /**
      * Put into SimpleHashMAp method
      *
@@ -31,7 +27,7 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleEntry<K, V>> {
      */
     public void put(K key, V value) {
         modificationCount++;
-        int numBasket = 0;
+        int numBasket;
         if (key == null) {
             if (array[0] == null) {
                 array[0] = new SimpleEntry<K, V>(key, value);
@@ -50,12 +46,11 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleEntry<K, V>> {
 
         if (null == array[numBasket]) {
             array[numBasket] = new SimpleEntry<K, V>(key, value);
-            size++;
         } else {
             SimpleEntry<K, V> entry = array[numBasket];
 
             while (true) {
-                if (null != entry.getKey() & entry.getKey().equals(key)) {
+                if (null != entry.getKey() & Objects.equals(entry.getKey(), key)) {
                     entry.setValue(value);
                     return;
                 }
@@ -67,8 +62,8 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleEntry<K, V>> {
             }
 
             entry.setNext(new SimpleEntry<K, V>(key, value));
-            size++;
         }
+        size++;
     }
 
     /**

@@ -21,10 +21,6 @@ class SimpleEntry<K, V> {
         return value;
     }
 
-    public void setKey(K key) {
-        this.key = key;
-    }
-
     public void setValue(V value) {
         this.value = value;
     }
@@ -38,6 +34,6 @@ class SimpleEntry<K, V> {
     }
 
     public String toString() {
-        return new String("Key " + key + " , value " + value);
+        return ("Key " + key + " , value " + value);
     }
 }

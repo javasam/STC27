@@ -1,7 +1,5 @@
 package lesson_2;
 
-import java.util.HashMap;
-import java.util.Iterator;
 
 /**
  * Спроектировать и реализовать класс, реализующий коллекцию типа "хеш-таблица" (hash-map),
@@ -17,29 +15,5 @@ import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
-        /**
-         * Create and fill SimpleHashMap.
-         */
-        SimpleHashMap simpleHashMap = new SimpleHashMap();
-        simpleHashMap.put(1, "Apple");
-        simpleHashMap.put(2, "Banana");
-        simpleHashMap.put(3, "Cherry");
-
-        /**
-         * Display SimpleHashMap methods: size, get, toString, remove.
-         */
-        System.out.println("HashMap size: " + simpleHashMap.size());
-        System.out.println("HashMap get element by key " + simpleHashMap.get(2));
-        System.out.println(simpleHashMap.toString());
-        simpleHashMap.remove(1);
-        System.out.println("Removed element: " + simpleHashMap.get(1));
-        /**
-         * Display iterator opportunities
-         */
-        Iterator<SimpleEntry> itr = simpleHashMap.iterator();
-        while (itr.hasNext()) {
-            SimpleEntry simpleEntry = itr.next();
-            System.out.println("Key: " + simpleEntry.getKey() + " Value: " + simpleEntry.getValue());
-        }
     }
 }
