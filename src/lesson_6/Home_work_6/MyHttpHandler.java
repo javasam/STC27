@@ -2,6 +2,7 @@ package lesson_6.Home_work_6;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -18,11 +19,11 @@ class MyHttpHandler implements HttpHandler {
         FolderList folderList = new FolderList();
 
         if ("GET".equals(httpExchange.getRequestMethod())) {
-            htmlResponse = "Hello! It works! <br> Dude, you are blowing up. Your files: " + folderList.showFolderList();
+            htmlResponse = "Hello! It works! <br> Dude, you are blowing up. Your files: " + folderList.getFolderList();
             // Header
             httpExchange.sendResponseHeaders(200, htmlResponse.length());
             outputStream.write(htmlResponse.getBytes());
-        } else if ("POST".equals(httpExchange.getRequestMethod())) {
+        } else {
             // Header
             htmlResponse = "404 Not Found";
             httpExchange.sendResponseHeaders(404, htmlResponse.length());
