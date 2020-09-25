@@ -8,7 +8,7 @@ public class OutOfMemoryMeta extends Thread {
 
     public void run() {
         while (true) {
-            new StringFiller();
+            new OutOfMemoryMeta();
         }
     }
 }

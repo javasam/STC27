@@ -23,14 +23,4 @@ public class TestClass {
             System.out.println("Test pass!!!");
         }
     }
-
-    @Test
-    public void whenStartMethodOutOfMemoryMeta() {
-        for (int i = 0; i < 5; i++) {
-            new OutOfMemoryMeta().start();
-            System.out.println("Memory leak started: " + i);
-        }
-    }
-
-
 }
