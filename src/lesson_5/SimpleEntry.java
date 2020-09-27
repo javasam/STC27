@@ -1,4 +1,4 @@
-package lesson_2;
+package lesson_5;
 
 class SimpleEntry<K, V> {
     private K key;
