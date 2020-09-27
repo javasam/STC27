@@ -3,8 +3,8 @@ package lesson_7.Home_Work_7;
 import java.util.ArrayList;
 
 public class CellAction {
-    ArrayList<CellAction> neighbors;
-    CellStatus cellStatus;
+    private final ArrayList<CellAction> neighbors;
+    protected CellStatus cellStatus;
 
     public CellAction() {
         cellStatus = CellStatus.NONE;
@@ -15,12 +15,12 @@ public class CellAction {
         neighbors.add(cellAction);
     }
 
-    void step1() {
+    void callStep1Method() {
         int around = countNearCells();
         cellStatus = cellStatus.stepOne(around);
     }
 
-    void step2() {
+    void callStep2Method() {
         cellStatus = cellStatus.stepTwo();
     }
 

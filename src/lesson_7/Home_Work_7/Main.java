@@ -1,11 +1,19 @@
 package lesson_7.Home_Work_7;
 
-import java.net.MalformedURLException;
-
 import static javax.swing.SwingUtilities.invokeLater;
 
+/**
+ * Рализовать однопоточную и многопоточную версию игры "жизнь" с квадратным
+ * замкнутым полем https://ru.wikipedia.org/wiki/%D0%98%D0%B3%D1%80%D0%B0_%C2%AB%D0%96%D0%B8%D0%B7%D0%BD%D1%8C%C2%BB.
+ * Начальная конфигурация поля считывается из файла, конечная пишется в файл, имена файлов и
+ * количество шагов для расчета задается агрументами коммандной строки. Визуализацию процесса делать не обязательно.
+ * Для распаралеливания можно использовать любой подход. В юнит-тесте посмотреть и
+ * сравнить приблизительное время выполнения однопоточной и многопоточной версии на
+ * одних и тех же данных.
+ */
+
 public class Main {
-    public static void main(String[] args) throws MalformedURLException {
+    public static void main(String[] args) {
         Window window = new Window();
         invokeLater(window);
     }

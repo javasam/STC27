@@ -6,6 +6,13 @@ public enum CellStatus {
     LIVE,
     DIED;
 
+    /**
+     * Шаг первый определяем статус клетки(cell) в зависимости от количества соседей
+     *
+     * @param around количетво соседей рядом
+     * @return
+     */
+
     public CellStatus stepOne(int around) {
         switch (this) {
             case NONE:
@@ -17,6 +24,11 @@ public enum CellStatus {
         }
     }
 
+    /**
+     * Шаг второй устанавливаем статус клетки(cell)
+     *
+     * @return статус
+     */
     public CellStatus stepTwo() {
         switch (this) {
             case BORN:

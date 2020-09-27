@@ -2,7 +2,11 @@ package lesson_7.Home_Work_7;
 
 import javax.swing.*;
 
-import static lesson_7.Home_Work_7.Config.*;
+import static lesson_7.Home_Work_7.Config.SIZE;
+
+/**
+ * Класс описывает ячейку
+ */
 
 public class Cell extends JPanel {
 
@@ -15,21 +19,20 @@ public class Cell extends JPanel {
         setBackground(Config.getColor(CellStatus.NONE));
     }
 
-    public void initCells(int x, int y) {
-
-    }
-
-    public void setColor() {
+    /**
+     * Устанавливает цвет ячейки
+     */
+    void setColor() {
         setBackground(Config.getColor(cellAction.cellStatus));
     }
 
-    public void step1() {
-        cellAction.step1();
+    void setColorForLive() {
+        cellAction.callStep1Method();
         setColor();
     }
 
-    public void step2() {
-        cellAction.step2();
+    void setColorForOthers() {
+        cellAction.callStep2Method();
         setColor();
     }
 }
