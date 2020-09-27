@@ -43,6 +43,14 @@ public class InputAndCompile {
         fileWriter.close();
     }
 
+    /**
+     * Compile *.java file to *.class
+     *
+     * @param in
+     * @param out
+     * @param err
+     * @throws InterruptedException
+     */
     void compile(InputStream in, OutputStream out, OutputStream err) throws InterruptedException {
         ToolProvider.getSystemJavaCompiler().run(in, out, err, PATH_TO_JAVA_FILE);
         System.out.println("File: " + PATH_TO_JAVA_FILE + " Compiled!");

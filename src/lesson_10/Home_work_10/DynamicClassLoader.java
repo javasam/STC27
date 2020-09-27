@@ -11,7 +11,7 @@ public class DynamicClassLoader extends ClassLoader {
     /**
      * Load class passed in parameters
      *
-     * @param name - file_name for find
+     * @param name - file_name to find class
      * @return
      * @throws ClassNotFoundException
      */
