@@ -56,6 +56,4 @@ public class TestClass {
         simpleHashMap.put(2, "Samsung");
         assertThat(2, is(simpleHashMap.size()));
     }
-
-
 }
