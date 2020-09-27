@@ -1,4 +1,4 @@
-package lesson_10.Home_work_v2;
+package lesson_10.Home_work_10;
 
 /**
  * Необходимо написать программу, выполняющую следующее:
@@ -10,17 +10,16 @@ package lesson_10.Home_work_v2;
  * 5. Метод, введенный с консоли, исполняется в рантайме (вызывается у экземпляра объекта подгруженного класса)
  */
 
-
+//please input: ### public String toString() { return "Test class!!!!"; }} ### in cmd
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        ClassLoader loader;
         InputAndCompile inputAndCompile = new InputAndCompile();
         inputAndCompile.input();
-        inputAndCompile.compile();
-        loader = new DynamicClassLoader(new String[]{"."});
-        Class clazz = Class.forName("lesson_10.Home_work_v2.test.ClassToLoad", true, loader);
-        Object object = clazz.newInstance();
-        System.out.println(object.toString());
+        inputAndCompile.compile(null, System.out, System.err);
+        DynamicClassLoader dynamicClassLoader = new DynamicClassLoader();
+        Class clazz = dynamicClassLoader.findClass("ClassToLoad");
+        Object obj = clazz.newInstance();
+        System.out.println(obj.toString());
     }
 }
