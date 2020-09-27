@@ -1,7 +1,5 @@
 package lesson_12.Home_work_12;
 
-import org.junit.Test;
-
 /**
  * 1. Необходимо создать программу, которая продемонстрирует утечку памяти в Java.
  * При этом объекты должны не только создаваться, но и периодически частично удаляться,
@@ -11,16 +9,9 @@ import org.junit.Test;
  * 2. Сделать чтобы ошибка OutOfMemoryError была в Permanent Generation (или Metaspace)
  */
 
-public class TestClass {
-
-    @Test
-    public void whenStartMethodOutOFMemoryHeap() {
-        StringFiller stringFiller = new StringFiller();
-        try {
-            stringFiller.outOfMemoryHeapSpace(Integer.MAX_VALUE);
-        } catch (OutOfMemoryError e) {
-            e.printStackTrace();
-            System.out.println("Test pass!!!");
-        }
+public class OutOfMemoryHeap {
+    public static void main(String[] args) {
+        int[] arrays = new int[1000000000];
     }
+
 }
