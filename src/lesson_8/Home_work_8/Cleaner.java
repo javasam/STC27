@@ -61,8 +61,8 @@ class Cleaner {
         if (object instanceof Map) {
             Map<?, ?> map = (Map<?, ?>) object;
             for (String string : strings) {
-                if (map.containsKey(Integer.parseInt(string))) {
-                    map.remove(Integer.parseInt(string));
+                if (map.containsKey(string)) {
+                    map.remove(string);
                 } else throw new IllegalArgumentException();
             }
         }

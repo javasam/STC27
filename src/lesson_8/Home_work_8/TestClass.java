@@ -46,11 +46,11 @@ public class TestClass {
     @Test
     public void whenCallMethodMapCleaner_thenMapCleaned() {
         Cleaner cleaner = new Cleaner();
-        Map<Integer, String> hashMap = new HashMap<>();
+        Map<String, String> hashMap = new HashMap<>();
         Set<String> fieldToCleanUp = new HashSet<>();
-        hashMap.put(1, "1");
-        hashMap.put(2, "2");
-        hashMap.put(3, "3");
+        hashMap.put("1", "1");
+        hashMap.put("2", "2");
+        hashMap.put("3", "3");
         fieldToCleanUp.add("1");
         cleaner.mapCleaner(hashMap, fieldToCleanUp);
         assertThat("{2=2, 3=3}", is(hashMap.toString()));
