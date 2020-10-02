@@ -1,5 +1,7 @@
 package lesson_10.Home_work_10;
 
+import java.lang.reflect.Method;
+
 /**
  * Необходимо написать программу, выполняющую следующее:
  * 1. Программа с консоли построчно считывает код метода doWork. Код не должен требовать
@@ -12,7 +14,7 @@ package lesson_10.Home_work_10;
  * объекта подгруженного класса)
  */
 
-//please input: ### public String toString() { return "Test class!!!!"; }} ### in cmd
+//please input: ### System.out.println("Test!!!"); ### in cmd
 public class Main {
 
     public static void main(String[] args) throws Exception {
@@ -22,6 +24,7 @@ public class Main {
         DynamicClassLoader dynamicClassLoader = new DynamicClassLoader();
         Class clazz = dynamicClassLoader.findClass("ClassToLoad");
         Object obj = clazz.newInstance();
-        System.out.println(obj.toString());
+        Method method = clazz.getMethods()[0];
+        method.invoke(obj);
     }
 }

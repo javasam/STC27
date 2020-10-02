@@ -24,11 +24,11 @@ public class InputAndCompile {
         }
 
         FileWriter fileWriter = new FileWriter(PATH_TO_JAVA_FILE);
-        String classBuilder;
+        String firstString;
         Scanner input = new Scanner(System.in);
-        classBuilder = "public class ClassToLoad { ";
+        firstString = "public class ClassToLoad { public void doWork() {";
         System.out.println("Input string: \n");
-        fileWriter.write(classBuilder);
+        fileWriter.write(firstString);
 
         while (true) {
             String temp = input.nextLine();
@@ -39,6 +39,8 @@ public class InputAndCompile {
             }
         }
         input.close();
+        String lastString = "}}";
+        fileWriter.write(lastString);
         fileWriter.flush();
         fileWriter.close();
     }
