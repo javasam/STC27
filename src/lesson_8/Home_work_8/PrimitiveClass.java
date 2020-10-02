@@ -1,5 +1,9 @@
 package lesson_8.Home_work_8;
 
+/**
+ * Simple class for testing primitives
+ */
+
 public class PrimitiveClass extends Person {
     Byte aByte;
     Short aShort;

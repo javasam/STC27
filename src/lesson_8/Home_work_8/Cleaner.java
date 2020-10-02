@@ -19,11 +19,27 @@ import java.util.Set;
 
 class Cleaner {
 
+    /**
+     * General method, which join two methods
+     *
+     * @param object          input Object
+     * @param fieldsToCleanUp fields to clean
+     * @param fieldsToOutput  fields to print
+     * @throws IllegalAccessException
+     */
     void cleanUpAll(Object object, Set<String> fieldsToCleanUp, Set<String> fieldsToOutput) throws IllegalAccessException {
         mapCleaner(object, fieldsToCleanUp);
         cleanUp(object, fieldsToCleanUp);
         convertToString(object, fieldsToOutput);
     }
+
+    /**
+     * Method to clean fields in Object
+     *
+     * @param object          Object to clean
+     * @param fieldsToCleanUp Fields to clean
+     * @throws IllegalAccessException
+     */
 
     void cleanUp(Object object, Set<String> fieldsToCleanUp) throws IllegalAccessException {
         Field[] objectFields = object.getClass().getDeclaredFields();
@@ -45,6 +61,15 @@ class Cleaner {
         }
     }
 
+    /**
+     * Method to print fields from Object
+     *
+     * @param object         input Object
+     * @param fieldsToOutput list fields to print
+     * @return
+     * @throws IllegalAccessException
+     */
+
     String convertToString(Object object, Set<String> fieldsToOutput) throws IllegalAccessException {
         Field[] objectFields = object.getClass().getDeclaredFields();
         for (Field objectField : objectFields) {
@@ -56,6 +81,13 @@ class Cleaner {
         }
         return "No strings found!";
     }
+
+    /**
+     * Special method to clean Map in Object
+     *
+     * @param object  input Object
+     * @param strings Set strings to clean
+     */
 
     void mapCleaner(Object object, Set<String> strings) {
         if (object instanceof Map) {
