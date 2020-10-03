@@ -12,7 +12,6 @@ public class Input {
 
     /**
      * Input string from console
-     *
      * @throws IOException
      */
     void input(String PATH_TO_JAVA_FILE) throws IOException {
