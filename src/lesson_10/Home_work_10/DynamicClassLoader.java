@@ -12,8 +12,8 @@ public class DynamicClassLoader extends ClassLoader {
      * Load class passed in parameters
      *
      * @param name - file_name to find class
-     * @return
-     * @throws ClassNotFoundException
+     * @return Class
+     * @throws ClassNotFoundException CNF
      */
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
@@ -21,7 +21,7 @@ public class DynamicClassLoader extends ClassLoader {
             final byte[] bytes = Files.readAllBytes(Paths.get(name + ".class"));
             return defineClass(null, bytes, 0, bytes.length);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Class not found");
         }
         throw new ClassNotFoundException("Class not found");
     }

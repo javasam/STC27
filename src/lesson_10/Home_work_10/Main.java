@@ -14,15 +14,17 @@ import java.lang.reflect.Method;
  * объекта подгруженного класса)
  */
 
-//please input: ### System.out.println("Test!!!"); ### in cmd
+//please input: ### System.out.println("Test!!!"); ### or ### for (int i = 0; i < 10; i++) System.out.println(i); ###
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        InputAndCompile inputAndCompile = new InputAndCompile();
-        inputAndCompile.input();
-        inputAndCompile.compile(null, System.out, System.err);
+        Compile compile = new Compile();
+        String pathToJava = "./ClassToLoad.java";
+        Input inputAndCompile = new Input();
+        inputAndCompile.input(pathToJava);
+        compile.compile(null, System.out, System.err, pathToJava);
         DynamicClassLoader dynamicClassLoader = new DynamicClassLoader();
-        Class clazz = dynamicClassLoader.findClass("ClassToLoad");
+        Class<?> clazz = dynamicClassLoader.findClass("ClassToLoad");
         Object obj = clazz.newInstance();
         Method method = clazz.getMethods()[0];
         method.invoke(obj);
