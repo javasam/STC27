@@ -14,7 +14,8 @@ public class OutOfMemoryMeta {
     public static void main(String[] args) throws Exception {
         DynClassLoader dynClassLoader = new DynClassLoader();
 
-        while (true)
+        while (true) {
             dynClassLoader.classLoader();
+        }
     }
 }
