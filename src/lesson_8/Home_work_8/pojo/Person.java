@@ -1,4 +1,4 @@
-package lesson_8.Home_work_8;
+package lesson_8.Home_work_8.pojo;
 
 import java.util.List;
 
@@ -7,13 +7,13 @@ import java.util.List;
  */
 
 public class Person {
-    int id;
-    String name;
-    String address;
-    String cellPhone;
+    protected int id;
+    protected String name;
+    protected String address;
+    protected String cellPhone;
     protected List<String> cardNumbers;
 
-    Person(int id, String name, String address, String cellPhone, List<String> cardNumbers) {
+    public Person(int id, String name, String address, String cellPhone, List<String> cardNumbers) {
         this.id = id;
         this.name = name;
         this.address = address;

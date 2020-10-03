@@ -1,4 +1,4 @@
-package lesson_8.Home_work_8;
+package lesson_8.Home_work_8.logic;
 
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -17,7 +17,7 @@ import java.util.Set;
  * оставив объект неизменным.
  */
 
-class Cleaner {
+public class Cleaner implements CleanFields {
 
     /**
      * General method, which join two methods
@@ -27,10 +27,10 @@ class Cleaner {
      * @param fieldsToOutput  fields to print
      * @throws IllegalAccessException
      */
-    void cleanUpAll(Object object, Set<String> fieldsToCleanUp, Set<String> fieldsToOutput) throws IllegalAccessException {
+    public String cleanUpAll(Object object, Set<String> fieldsToCleanUp, Set<String> fieldsToOutput) throws IllegalAccessException {
         mapCleaner(object, fieldsToCleanUp);
         cleanUp(object, fieldsToCleanUp);
-        convertToString(object, fieldsToOutput);
+        return convertToString(object, fieldsToOutput);
     }
 
     /**
@@ -40,8 +40,7 @@ class Cleaner {
      * @param fieldsToCleanUp Fields to clean
      * @throws IllegalAccessException
      */
-
-    void cleanUp(Object object, Set<String> fieldsToCleanUp) throws IllegalAccessException {
+    protected void cleanUp(Object object, Set<String> fieldsToCleanUp) throws IllegalAccessException {
         Field[] objectFields = object.getClass().getDeclaredFields();
         for (Field objectField : objectFields) {
             for (String fieldToClean : fieldsToCleanUp) {
@@ -69,8 +68,7 @@ class Cleaner {
      * @return
      * @throws IllegalAccessException
      */
-
-    String convertToString(Object object, Set<String> fieldsToOutput) throws IllegalAccessException {
+    protected String convertToString(Object object, Set<String> fieldsToOutput) throws IllegalAccessException {
         Field[] objectFields = object.getClass().getDeclaredFields();
         for (Field objectField : objectFields) {
             for (String fieldToOutput : fieldsToOutput) {
@@ -89,7 +87,7 @@ class Cleaner {
      * @param strings Set strings to clean
      */
 
-    void mapCleaner(Object object, Set<String> strings) {
+    protected void mapCleaner(Object object, Set<String> strings) {
         if (object instanceof Map) {
             Map<?, ?> map = (Map<?, ?>) object;
             for (String string : strings) {

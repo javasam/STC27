@@ -1,18 +1,18 @@
-package lesson_8.Home_work_8;
+package lesson_8.Home_work_8.pojo;
 
 /**
  * Simple class for testing primitives
  */
 
 public class PrimitiveClass extends Person {
-    Byte aByte;
-    Short aShort;
-    Integer integer;
-    Long aLong;
-    Float aFloat;
-    Double aDouble;
-    Boolean aBoolean;
-    boolean bool;
+    protected Byte aByte;
+    protected Short aShort;
+    protected Integer integer;
+    protected Long aLong;
+    protected Float aFloat;
+    protected Double aDouble;
+    protected Boolean aBoolean;
+    protected boolean bool;
 
     public PrimitiveClass(Byte aByte, Short aShort, Integer integer, Long aLong, Float aFloat, Double aDouble, Boolean aBoolean, boolean bool) {
         this.aByte = aByte;
