@@ -3,8 +3,10 @@ package lesson_10.Home_work_10;
 import javax.tools.ToolProvider;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.logging.Logger;
 
 public class Compile {
+    private static Logger log = Logger.getLogger(Compile.class.getName());
 
     /**
      * Compile *.java file to *.class
@@ -17,7 +19,8 @@ public class Compile {
      */
 
     void compile(InputStream in, OutputStream out, OutputStream err, String PATH_TO_JAVA_FILE) throws InterruptedException {
+        log.info("Starting compile");
         ToolProvider.getSystemJavaCompiler().run(in, out, err, PATH_TO_JAVA_FILE);
-        System.out.println("File: " + PATH_TO_JAVA_FILE + " Compiled!");
+        log.info("File: " + PATH_TO_JAVA_FILE + " Compiled!");
     }
 }

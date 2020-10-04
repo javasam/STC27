@@ -1,6 +1,7 @@
 package lesson_10.Home_work_10;
 
 import java.lang.reflect.Method;
+import java.util.logging.Logger;
 
 /**
  * Необходимо написать программу, выполняющую следующее:
@@ -16,8 +17,10 @@ import java.lang.reflect.Method;
 
 //please input: ### System.out.println("Test!!!"); ### or ### for (int i = 0; i < 10; i++) System.out.println(i); ###
 public class Main {
+    private static Logger log = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) throws Exception {
+        log.info("Starting program");
         Compile compile = new Compile();
         String pathToJava = "./ClassToLoad.java";
         Input inputAndCompile = new Input();
@@ -28,5 +31,6 @@ public class Main {
         Object obj = clazz.newInstance();
         Method method = clazz.getMethods()[0];
         method.invoke(obj);
+        log.info("Program end.");
     }
 }
